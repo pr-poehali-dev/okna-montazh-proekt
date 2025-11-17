@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
+import WindowCalculator from '@/components/WindowCalculator';
 
 const Index = () => {
   const { toast } = useToast();
@@ -198,6 +199,20 @@ const Index = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="calculator" className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4">
+            Рассчитайте стоимость
+          </h2>
+          <p className="text-center text-gray-600 mb-12 text-lg">
+            Узнайте примерную стоимость окон прямо сейчас
+          </p>
+          <div className="max-w-2xl mx-auto">
+            <WindowCalculator />
           </div>
         </div>
       </section>
