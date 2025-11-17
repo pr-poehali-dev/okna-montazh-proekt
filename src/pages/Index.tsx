@@ -62,6 +62,37 @@ const Index = () => {
     { number: '04', title: 'Установка', description: 'Профессиональный монтаж за 1 день' }
   ];
 
+  const testimonials = [
+    {
+      name: 'Анна Петрова',
+      role: 'Владелец квартиры',
+      rating: 5,
+      text: 'Заказывала остекление балкона. Работу выполнили за один день, без грязи и пыли. Результат превзошел ожидания! Теплый балкон стал любимым местом в квартире.',
+      avatar: '👩'
+    },
+    {
+      name: 'Дмитрий Соколов',
+      role: 'Собственник дома',
+      rating: 5,
+      text: 'Меняли все окна в доме - 8 штук. Бригада работала профессионально, соблюдали все сроки. Окна отличного качества, в доме стало заметно теплее и тише.',
+      avatar: '👨'
+    },
+    {
+      name: 'Мария Иванова',
+      role: 'Владелец квартиры',
+      rating: 5,
+      text: 'Очень довольна обслуживанием! От замера до установки все прошло гладко. Менеджер всегда на связи, ответил на все вопросы. Окна красивые, функциональные.',
+      avatar: '👩‍💼'
+    },
+    {
+      name: 'Алексей Кузнецов',
+      role: 'Владелец офиса',
+      rating: 5,
+      text: 'Заказывали окна для офиса. Подобрали оптимальный вариант по цене и качеству. Установка прошла быстро, не помешала работе. Рекомендую!',
+      avatar: '👔'
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
       <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
@@ -242,7 +273,50 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contact" className="py-20 bg-white">
+      <section id="testimonials" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4">
+            Отзывы наших клиентов
+          </h2>
+          <p className="text-center text-gray-600 mb-12 text-lg">
+            Более 2000 довольных клиентов по всей России
+          </p>
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="border-none shadow-lg hover:shadow-xl transition-shadow animate-fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <CardHeader>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-16 h-16 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-3xl">
+                      {testimonial.avatar}
+                    </div>
+                    <div className="flex-1">
+                      <CardTitle className="text-xl">{testimonial.name}</CardTitle>
+                      <CardDescription>{testimonial.role}</CardDescription>
+                    </div>
+                    <div className="flex space-x-1">
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Icon key={i} name="Star" className="text-yellow-400 fill-yellow-400" size={20} />
+                      ))}
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-gray-700 leading-relaxed">{testimonial.text}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <div className="inline-flex items-center space-x-2 bg-gradient-to-r from-primary/10 to-secondary/10 px-6 py-3 rounded-full">
+              <Icon name="Star" className="text-yellow-400 fill-yellow-400" size={24} />
+              <span className="text-2xl font-bold text-primary">4.9</span>
+              <span className="text-gray-600">средний рейтинг на основе 347 отзывов</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto">
             <h2 className="text-4xl font-bold text-center mb-4">
