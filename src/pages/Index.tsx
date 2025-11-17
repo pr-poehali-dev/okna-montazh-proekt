@@ -3,12 +3,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
 import WindowCalculator from '@/components/WindowCalculator';
 
 const Index = () => {
   const { toast } = useToast();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -104,15 +106,99 @@ const Index = () => {
             </span>
           </div>
           <nav className="hidden md:flex space-x-8">
+            <a href="#gallery" className="text-gray-700 hover:text-primary transition-colors">Наши работы</a>
             <a href="#catalog" className="text-gray-700 hover:text-primary transition-colors">Каталог</a>
-            <a href="#advantages" className="text-gray-700 hover:text-primary transition-colors">Преимущества</a>
-            <a href="#process" className="text-gray-700 hover:text-primary transition-colors">Как работаем</a>
+            <a href="#calculator" className="text-gray-700 hover:text-primary transition-colors">Калькулятор</a>
+            <a href="#testimonials" className="text-gray-700 hover:text-primary transition-colors">Отзывы</a>
             <a href="#contact" className="text-gray-700 hover:text-primary transition-colors">Контакты</a>
           </nav>
-          <Button className="hidden md:flex">
-            <Icon name="Phone" size={18} className="mr-2" />
-            Позвонить
-          </Button>
+          <div className="flex items-center space-x-4">
+            <Button className="hidden md:flex">
+              <Icon name="Phone" size={18} className="mr-2" />
+              Позвонить
+            </Button>
+            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="icon" className="md:hidden">
+                  <Icon name="Menu" size={24} />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                <div className="flex flex-col space-y-6 mt-8">
+                  <div className="flex items-center space-x-2 pb-4 border-b">
+                    <Icon name="Home" className="text-primary" size={32} />
+                    <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                      ОкнаПро
+                    </span>
+                  </div>
+                  <nav className="flex flex-col space-y-4">
+                    <a
+                      href="#gallery"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center space-x-3 text-lg font-medium text-gray-700 hover:text-primary transition-colors py-2"
+                    >
+                      <Icon name="Image" size={20} />
+                      <span>Наши работы</span>
+                    </a>
+                    <a
+                      href="#catalog"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center space-x-3 text-lg font-medium text-gray-700 hover:text-primary transition-colors py-2"
+                    >
+                      <Icon name="ShoppingBag" size={20} />
+                      <span>Каталог</span>
+                    </a>
+                    <a
+                      href="#calculator"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center space-x-3 text-lg font-medium text-gray-700 hover:text-primary transition-colors py-2"
+                    >
+                      <Icon name="Calculator" size={20} />
+                      <span>Калькулятор</span>
+                    </a>
+                    <a
+                      href="#advantages"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center space-x-3 text-lg font-medium text-gray-700 hover:text-primary transition-colors py-2"
+                    >
+                      <Icon name="Award" size={20} />
+                      <span>Преимущества</span>
+                    </a>
+                    <a
+                      href="#process"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center space-x-3 text-lg font-medium text-gray-700 hover:text-primary transition-colors py-2"
+                    >
+                      <Icon name="ListChecks" size={20} />
+                      <span>Как работаем</span>
+                    </a>
+                    <a
+                      href="#testimonials"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center space-x-3 text-lg font-medium text-gray-700 hover:text-primary transition-colors py-2"
+                    >
+                      <Icon name="MessageSquare" size={20} />
+                      <span>Отзывы</span>
+                    </a>
+                    <a
+                      href="#contact"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center space-x-3 text-lg font-medium text-gray-700 hover:text-primary transition-colors py-2"
+                    >
+                      <Icon name="Mail" size={20} />
+                      <span>Контакты</span>
+                    </a>
+                  </nav>
+                  <div className="pt-6 border-t">
+                    <Button className="w-full" size="lg">
+                      <Icon name="Phone" size={20} className="mr-2" />
+                      +7 (999) 123-45-67
+                    </Button>
+                  </div>
+                </div>
+              </SheetContent>
+            </Sheet>
+          </div>
         </div>
       </header>
 
