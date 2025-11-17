@@ -166,7 +166,53 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="advantages" className="py-20 bg-white">
+      <section id="gallery" className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-4">
+            Наши работы
+          </h2>
+          <p className="text-center text-gray-600 mb-12 text-lg">
+            Галерея выполненных проектов
+          </p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { src: 'https://cdn.poehali.dev/projects/5787da1f-792e-40bd-92a2-7ea2ae6ce7ba/files/632a4cf3-25a8-4c2c-b013-b96c86460008.jpg', title: 'Гостиная', subtitle: '3-комнатная квартира' },
+              { src: 'https://cdn.poehali.dev/projects/5787da1f-792e-40bd-92a2-7ea2ae6ce7ba/files/d3730bb6-663b-4854-856e-386010144213.jpg', title: 'Остекление балкона', subtitle: 'Панорамный вид' },
+              { src: 'https://cdn.poehali.dev/projects/5787da1f-792e-40bd-92a2-7ea2ae6ce7ba/files/0f52c141-376a-452f-84b6-f4397ae826af.jpg', title: 'Домашний офис', subtitle: 'Минималистичный стиль' },
+              { src: 'https://cdn.poehali.dev/projects/5787da1f-792e-40bd-92a2-7ea2ae6ce7ba/files/6380d418-32bb-429e-9385-9b678516cfd8.jpg', title: 'Кухня', subtitle: 'Современный дизайн' },
+              { src: 'https://cdn.poehali.dev/projects/5787da1f-792e-40bd-92a2-7ea2ae6ce7ba/files/ae661545-fbdd-45f0-985f-2b061629ac40.jpg', title: 'Спальня', subtitle: 'Панорамные окна' },
+              { src: 'https://cdn.poehali.dev/projects/5787da1f-792e-40bd-92a2-7ea2ae6ce7ba/files/189fa392-8ce1-4a6c-a3b5-c44b6ef4c2ca.jpg', title: 'Гостиная зона', subtitle: 'Эркерные окна' }
+            ].map((item, index) => (
+              <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <img
+                  src={item.src}
+                  alt={item.title}
+                  className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="text-2xl font-bold mb-1">{item.title}</h3>
+                    <p className="text-white/90">{item.subtitle}</p>
+                  </div>
+                </div>
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
+                    <Icon name="ZoomIn" className="text-white" size={24} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12">
+            <Button size="lg" variant="outline" className="text-lg group">
+              Смотреть все работы
+              <Icon name="ArrowRight" size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section id="advantages" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-12">
             Почему выбирают нас
